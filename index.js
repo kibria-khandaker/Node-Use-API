@@ -1,6 +1,7 @@
 const express = require('express');
 const randomFun = require('./middleware/randomFun.js');
 const app = express();
+require("dotenv").config();
 const PORT = 5000;
 
 // my middleware
@@ -16,14 +17,14 @@ app.use("/api/v1/user", userRouter);
 
 
 app.get('/', (req, res) => {
-    res.send('Welcome to my <b> Node App </b>')
+    res.send('Welcome to my  Node App')
 })
 
 
 
 
 app.all('*', (req, res) => {
-    res.send('<b> Maybe Your Route Not exist </b>')
+    res.send(' Maybe Your Route Not exist')
 })
 
 app.listen(PORT, () => {
