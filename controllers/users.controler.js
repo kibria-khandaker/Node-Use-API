@@ -1,51 +1,26 @@
-const usersData=[
+const usersData = [
     {
-      "_id": 1,
-      "gender":"xx",
-      "name": "Construction Tools Manufacturer",
-      "contact": "01913595268",
-      "address": "Dghaka Bangladesh",
-      "photoUrl": "https://construction-tools-36dcf.web.app/",
-      "details": "Looking for the best car wash & car cleaning services at home? We are trusted & skilled auto mechanics & service providers in Bangladesh. Book now!",
-      "moreImg": [
-        "https://i.ibb.co/7VGbp3h/light-mode-1c.png",
-        "https://i.ibb.co/PrxDyhC/light-mode-1d.png",
-        "https://i.ibb.co/drfs5pN/light-mode-1a.png",
-        "https://i.ibb.co/4Jtsb4s/light-mode-1b.png"
-      ]
+        "id": "1",
+        "gender": "xx",
+        "name": "Manufacturer 01",
+        "contact": "01913595268",
+        "address": "Dghaka Bangladesh",
     },
     {
-      "_id": 2,
-      "gender":"yy",
-      "name": "a-smart-cleaner",
-      "contact": "01913595268",
-      "address": "Dghaka Bangladesh",
-      "photoUrl": "https://a-smart-cleaner.web.app/",
-      "details": "We are a comprehensive garden cleaning and maintenance company. Get your weekends back, and let our gardening team take care of your gardening.",
-      "moreImg": [
-        "https://i.ibb.co/dQv9RP4/light-mode-2a.png",
-        "https://i.ibb.co/sbfh5f1/light-mode-2b.png",
-        "https://i.ibb.co/C59d6v1/light-mode-2c.png",
-        "https://i.ibb.co/19CRbWQ/light-mode-2d.png"
-      ]
+        "id": "2",
+        "gender": "yy",
+        "name": "a-smart-cleaner",
+        "contact": "01913595268",
+        "address": "Dghaka Bangladesh",
     },
     {
-      "_id": 3,
-      "gender":"xx",
-      "name": "Al-modan Hitlar",
-      "contact": "01913595268",
-      "address": "Dghaka Bangladesh",
-      "photoUrl": "https://fruits-stock-house.web.app/",
-      "details": "This service will help you to clean your home and also help to remove deep stains. Our Service provider will use effective chemicals that will wash your home smoothly and neatly.",
-      "moreImg": [
-        "https://i.ibb.co/ckjqCCV/light-mode-3a.png",
-        "https://i.ibb.co/NsMg2c9/light-mode-3b.png",
-        "https://i.ibb.co/84pvSPq/light-mode-3c.png",
-        "https://i.ibb.co/WV8WRF2/light-mode-3d.png",
-        "https://i.ibb.co/qs2NdPB/light-mode-3e.png"
-      ]
+        "id": "3",
+        "gender": "xx",
+        "name": "Al-modan Hitlar",
+        "contact": "01913595268",
+        "address": "Dghaka Bangladesh",
     }
-  ]
+]
 
 
 module.exports.allUsers = (req, res) => {
@@ -71,7 +46,11 @@ module.exports.allUsers = (req, res) => {
 module.exports.getAllUsers = (req, res) => {
     // res.send('Welcome to my  <b> all Users </b>')
     // res.send(usersData);
-    res.json(usersData);
+
+    const { limit, page } = req.query;
+    console.log(limit, page);
+    // const filter = { id: id };
+    res.json(usersData.slice(0, limit));
 };
 // module.exports.postUser = (req, res) => {
 //     res.send('Welcome to my  <b> User post API </b>')
@@ -84,15 +63,77 @@ module.exports.getRandomUser = (req, res) => {
 module.exports.getSaveUser = (req, res) => {
     res.send('Welcome to my user <b>  Save </b> ')
 };
+module.exports.getPostUser = (req, res) => {
+    console.log(req.body);
+    usersData.push(req.body)
+    // res.send('Welcome to my user <b>  get Post User </b> ')
+    res.send(usersData)
+};
+
+
 
 module.exports.getUpdateUser = (req, res) => {
-    res.send('Welcome to my user <b>  Update </b>')
+    res.send('Welcome to my user <b>  Update this ID-s user </b>')
+    // const { id } = req.params;
+    // const filter = { id: id };
+    // const userId2 = usersData.find(user => user.id == id)
+    // res.send(userId2.name)
 };
+
+
+
 
 module.exports.getBulkUpdateUser = (req, res) => {
     res.send('Welcome to my user <b> Bulk-update </b>')
 };
 module.exports.getDeleteUser = (req, res) => {
     res.send('Welcome to my user <b> Delete </b>')
+};
+
+// find user by id
+module.exports.getUserID = (req, res) => {
+    const { id } = req.params;
+    // const filter = { id: id };
+    const userId = usersData.find(user => user.id == id)
+    // res.send(userId.name)
+    res.send(userId)
+};
+
+// find user by id and match user to patch
+module.exports.updatePutUserById = (req, res) => {
+    // res.send('Welcome to my user <b>  Put </b>')
+    // const { id } = req.params;
+    // const filter = { id: id };
+    // const userId = usersData.find(user => user.id == id)
+    // res.send(userId)
+
+    const { id } = req.params;
+    // const filter = { id: id };
+    const userId = usersData.find(user => user.id == id)
+    res.send(userId)
+
+};
+
+
+module.exports.updatePatchUserById = (req, res) => {
+    // res.send('Welcome to my user <b>  patch </b>')
+
+    const { id } = req.params;
+    const filter = { id: id };
+    const newData = usersData.find(data => data.id == id);
+    newData.id = id;
+    newData.name = req.body.name;
+    res.send(newData);
+
+};
+
+module.exports.deleteUserById = (req, res) => {
+    // res.send('Welcome to my user <b>  patch </b>')
+
+    const { id } = req.params;
+    const filter = { id: id };
+    const newData2 = usersData.filter(data => data.id !== id);
+    res.send(newData2);
+
 };
 

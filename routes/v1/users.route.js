@@ -26,11 +26,19 @@ router
 
 router
 .route('/save')
-.get(userApiControlers.getSaveUser);
+.get(userApiControlers.getSaveUser)
+.post(userApiControlers.getPostUser);
 
 router
 .route('/update')
-.get(userApiControlers.getUpdateUser);
+.get(userApiControlers.getUpdateUser)
+// .patch(userApiControlers.updateUserById)
+
+// router
+// .route('/update/:id')
+// .patch(userApiControlers.updateUserById)
+
+
 
 router
 .route('/bulk-update')
@@ -39,6 +47,13 @@ router
 router
 .route('/delete')
 .get(userApiControlers.getDeleteUser);
+
+router
+.route('/:id')
+.get(userApiControlers.getUserID)
+.put(userApiControlers.updatePutUserById)
+.patch(userApiControlers.updatePatchUserById)
+.delete(userApiControlers.deleteUserById)
 
 module.exports = router;
 
