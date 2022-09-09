@@ -7,6 +7,9 @@ app.get('/', (req, res) => {
     res.send('Welcome to My<b> Node App </b>')
 })
 
+app.get('/user', (req, res) => {
+    res.send('Welcome to my user <b>List </b>')
+})
 
 app.listen(PORT, () => {
     console.log(`My Node App run on PORT ${PORT}`)
