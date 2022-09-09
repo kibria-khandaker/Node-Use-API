@@ -2,7 +2,7 @@ const express = require('express');
 const randomFun = require('./middleware/randomFun.js');
 const app = express();
 require("dotenv").config();
-const PORT = 5000;
+const PORT = process.env.PORT||5000;
 
 // my middleware
 // app.use(randomFun);
