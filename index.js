@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 
 //--------------
 const userRouter = require("./routes/v1/users.route.js");
-app.use("/api/v1/user", userRouter);
+app.use("/user", userRouter);
 
 
 //-----------------------------
