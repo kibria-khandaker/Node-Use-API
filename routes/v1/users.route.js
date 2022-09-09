@@ -1,4 +1,7 @@
 const express = require("express");
+const userApiControlers = require("../../controllers/users.controler");
+const randomFun = require("../../middleware/randomFun");
+
 const router = express.Router();
 
 // router.get('/', (req, res) => {
@@ -10,34 +13,32 @@ const router = express.Router();
 
 router
 .route('/')
-.get((req, res) => {
-    res.send('Welcome to my  <b> User </b>')
-})
-.post((req, res) => {
-    res.send('Welcome to my  <b> User post API </b>')
-})
+.get(userApiControlers.allUsers)
+// .post(userApiControlers.postUser)
 
+router
+.route('/all')
+.get(userApiControlers.getAllUsers);
 
-router.get('/random', (req, res) => {
-    res.send('Welcome to my user <b>  Random </b>')
-})
-router.get('/all', (req, res) => {
-    res.send('Welcome to my user <b>  All Users </b> ')
-})
-router.get('/save', (req, res) => {
-    res.send('Welcome to my user <b>  Save </b> ')
-})
-router.get('/update', (req, res) => {
-    res.send('Welcome to my user <b>  Update </b>')
-})
-router.get('/bulk-update', (req, res) => {
-    res.send('Welcome to my user <b> Bulk-update </b>')
-})
-router.get('/delete', (req, res) => {
-    res.send('Welcome to my user <b> Delete </b>')
-})
+router
+.route('/random')
+.get(randomFun,userApiControlers.getRandomUser);
 
+router
+.route('/save')
+.get(userApiControlers.getSaveUser);
 
+router
+.route('/update')
+.get(userApiControlers.getUpdateUser);
+
+router
+.route('/bulk-update')
+.get(userApiControlers.getBulkUpdateUser);
+
+router
+.route('/delete')
+.get(userApiControlers.getDeleteUser);
 
 module.exports = router;
 

@@ -1,7 +1,13 @@
 const express = require('express');
+const randomFun = require('./middleware/randomFun.js');
 const app = express();
-
 const PORT = 5000;
+
+// my middleware
+// app.use(randomFun);
+
+
+//--------------
 const userRouter = require("./routes/v1/users.route.js");
 
 
