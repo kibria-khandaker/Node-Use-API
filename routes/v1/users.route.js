@@ -1,9 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
-router.get('/', (req, res) => {
+// router.get('/', (req, res) => {
+//     res.send('Welcome to my  <b> User </b>')
+// })
+// router.post('/', (req, res) => {
+//     res.send('Welcome to my  <b> User post API </b>')
+// })
+
+router
+.route('/')
+.get((req, res) => {
     res.send('Welcome to my  <b> User </b>')
 })
+.post((req, res) => {
+    res.send('Welcome to my  <b> User post API </b>')
+})
+
 
 router.get('/random', (req, res) => {
     res.send('Welcome to my user <b>  Random </b>')
@@ -23,6 +36,8 @@ router.get('/bulk-update', (req, res) => {
 router.get('/delete', (req, res) => {
     res.send('Welcome to my user <b> Delete </b>')
 })
+
+
 
 module.exports = router;
 
