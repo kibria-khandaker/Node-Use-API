@@ -26,24 +26,29 @@ const usersData = [
 
 
 module.exports.allUsers = (req, res) => {
-    const localUrl = "http://localhost:5000"
+    // const localUrl = "http://localhost:5000"
     // target="_blank" 
-    res.send(`
-    Welcome to my user <b> Users </b>
+    res.send(' here user page')
 
-    <p>Ucan fiend Data using By this API </p>
+    // `
+    // Welcome to my user <b> Users </b>
 
-    <p>
-        <li> <a  href=${localUrl}>  http://localhost:5000/ </a> </li>
-        <li> <a  href="${localUrl}/api/v1/user">  http://localhost:5000/api/v1/user </a> </li>
-        <li> <a  href="${localUrl}/api/v1/user/all">  http://localhost:5000/api/v1/user/all </a> </li>
-        <li> <a  href="${localUrl}/api/v1/user/random">  http://localhost:5000/api/v1/user/random </a> </li>
-        <li> <a  href="${localUrl}/api/v1/user/save">  http://localhost:5000/api/v1/user/save </a> </li>
-        <li> <a  href="${localUrl}/api/v1/user/update">  http://localhost:5000/api/v1/user/update </a> </li>
-        <li> <a  href="${localUrl}/api/v1/user/bulk-update">  http://localhost:5000/api/v1/user/bulk-update </a> </li>
-        <li> <a  href="${localUrl}/api/v1/user/delete">  http://localhost:5000/api/v1/user/delete </a> </li>
-    </p>    
-    ` )
+    // <p>Ucan fiend Data using By this API </p>
+
+    // <p>
+    //     <li> <a  href=${localUrl}>  http://localhost:5000/ </a> </li>
+    //     <li> <a  href="${localUrl}/api/v1/user">  http://localhost:5000/api/v1/user </a> </li>
+    //     <li> <a  href="${localUrl}/api/v1/user/all">  http://localhost:5000/api/v1/user/all </a> </li>
+    //     <li> <a  href="${localUrl}/api/v1/user/random">  http://localhost:5000/api/v1/user/random </a> </li>
+    //     <li> <a  href="${localUrl}/api/v1/user/save">  http://localhost:5000/api/v1/user/save </a> </li>
+    //     <li> <a  href="${localUrl}/api/v1/user/update">  http://localhost:5000/api/v1/user/update </a> </li>
+    //     <li> <a  href="${localUrl}/api/v1/user/bulk-update">  http://localhost:5000/api/v1/user/bulk-update </a> </li>
+    //     <li> <a  href="${localUrl}/api/v1/user/delete">  http://localhost:5000/api/v1/user/delete </a> </li>
+    // </p>    
+    // ` 
+
+
+
 };
 
 module.exports.getAllUsers = (req, res) => {
