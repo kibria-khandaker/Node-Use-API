@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/user', (req, res) => {
-    res.send('Welcome to my user <b>List </b>')
+    res.send('Welcome to my users <b>List </b>')
 })
 
 app.listen(PORT, () => {
