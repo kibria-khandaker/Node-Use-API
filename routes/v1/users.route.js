@@ -49,6 +49,10 @@ router
 .get(userApiControlers.getDeleteUser);
 
 router
+.route('/file')
+.get(userApiControlers.getUserFile);
+
+router
 .route('/:id')
 .get(userApiControlers.getUserID)
 .put(userApiControlers.updatePutUserById)

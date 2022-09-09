@@ -30,6 +30,7 @@ module.exports.allUsers = (req, res) => {
     Welcome to my user <b> Users </b>
 
     <p>Ucan fiend Data using By this API </p>
+
     <p>
         <li> <a  href=${localUrl}>  http://localhost:5000/ </a> </li>
         <li> <a  href="${localUrl}/api/v1/user">  http://localhost:5000/api/v1/user </a> </li>
@@ -52,9 +53,6 @@ module.exports.getAllUsers = (req, res) => {
     // const filter = { id: id };
     res.json(usersData.slice(0, limit));
 };
-// module.exports.postUser = (req, res) => {
-//     res.send('Welcome to my  <b> User post API </b>')
-// };
 
 module.exports.getRandomUser = (req, res) => {
     res.send('Welcome to my user <b>  Random </b>')
@@ -70,18 +68,9 @@ module.exports.getPostUser = (req, res) => {
     res.send(usersData)
 };
 
-
-
 module.exports.getUpdateUser = (req, res) => {
     res.send('Welcome to my user <b>  Update this ID-s user </b>')
-    // const { id } = req.params;
-    // const filter = { id: id };
-    // const userId2 = usersData.find(user => user.id == id)
-    // res.send(userId2.name)
 };
-
-
-
 
 module.exports.getBulkUpdateUser = (req, res) => {
     res.send('Welcome to my user <b> Bulk-update </b>')
@@ -89,11 +78,16 @@ module.exports.getBulkUpdateUser = (req, res) => {
 module.exports.getDeleteUser = (req, res) => {
     res.send('Welcome to my user <b> Delete </b>')
 };
+module.exports.getUserFile = (req, res) => {
+    // res.sendFile(__dirname + "/public/vector2.png");
+    res.render("home.ejs",{
+        id:2,
+    });
+};
 
 // find user by id
 module.exports.getUserID = (req, res) => {
     const { id } = req.params;
-    // const filter = { id: id };
     const userId = usersData.find(user => user.id == id)
     // res.send(userId.name)
     res.send(userId)
@@ -101,39 +95,24 @@ module.exports.getUserID = (req, res) => {
 
 // find user by id and match user to patch
 module.exports.updatePutUserById = (req, res) => {
-    // res.send('Welcome to my user <b>  Put </b>')
-    // const { id } = req.params;
-    // const filter = { id: id };
-    // const userId = usersData.find(user => user.id == id)
-    // res.send(userId)
-
     const { id } = req.params;
-    // const filter = { id: id };
     const userId = usersData.find(user => user.id == id)
     res.send(userId)
-
 };
 
-
 module.exports.updatePatchUserById = (req, res) => {
-    // res.send('Welcome to my user <b>  patch </b>')
-
     const { id } = req.params;
     const filter = { id: id };
     const newData = usersData.find(data => data.id == id);
     newData.id = id;
     newData.name = req.body.name;
     res.send(newData);
-
 };
 
 module.exports.deleteUserById = (req, res) => {
-    // res.send('Welcome to my user <b>  patch </b>')
-
     const { id } = req.params;
     const filter = { id: id };
     const newData2 = usersData.filter(data => data.id !== id);
     res.send(newData2);
-
 };
 
