@@ -4,17 +4,9 @@ const randomFun = require("../../middleware/randomFun");
 
 const router = express.Router();
 
-// router.get('/', (req, res) => {
-//     res.send('Welcome to my  <b> User </b>')
-// })
-// router.post('/', (req, res) => {
-//     res.send('Welcome to my  <b> User post API </b>')
-// })
-
 router
 .route('/')
 .get(userApiControlers.allUsers)
-// .post(userApiControlers.postUser)
 
 router
 .route('/all')
@@ -32,13 +24,6 @@ router
 router
 .route('/update')
 .get(userApiControlers.getUpdateUser)
-// .patch(userApiControlers.updateUserById)
-
-// router
-// .route('/update/:id')
-// .patch(userApiControlers.updateUserById)
-
-
 
 router
 .route('/bulk-update')

@@ -1,3 +1,5 @@
+const { readFileSync } = require("fs");
+
 const usersData = [
     {
         "id": "1",
@@ -45,13 +47,12 @@ module.exports.allUsers = (req, res) => {
 };
 
 module.exports.getAllUsers = (req, res) => {
-    // res.send('Welcome to my  <b> all Users </b>')
-    // res.send(usersData);
+    // http://localhost:5000/api/v1/user/all?limit=2&page=1
 
-    const { limit, page } = req.query;
-    console.log(limit, page);
-    // const filter = { id: id };
-    res.json(usersData.slice(0, limit));
+    const allUsers = JSON.parse(readFileSync(`./public/userData.json`));
+    res.send(allUsers)
+
+    // res.json(usersData);
 };
 
 module.exports.getRandomUser = (req, res) => {
@@ -80,8 +81,8 @@ module.exports.getDeleteUser = (req, res) => {
 };
 module.exports.getUserFile = (req, res) => {
     // res.sendFile(__dirname + "/public/vector2.png");
-    res.render("home.ejs",{
-        id:2,
+    res.render("home.ejs", {
+        id: 2,
     });
 };
 
