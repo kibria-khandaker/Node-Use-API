@@ -4,45 +4,41 @@ const randomFun = require("../../middleware/randomFun");
 
 const router = express.Router();
 
+//---------------------
+
+//-1
 router
 .route('/')
 .get(userApiControlers.allUsers)
 
-router
-.route('/all')
-.get(userApiControlers.getAllUsers);
-
+//-2
 router
 .route('/random')
 .get(randomFun,userApiControlers.getRandomUser);
 
+//-3
+router
+.route('/all')
+.get(userApiControlers.getAllUsers);
+
+//-4
 router
 .route('/save')
-.get(userApiControlers.getSaveUser)
-.post(userApiControlers.getPostUser);
+.post(userApiControlers.getPostUser)
 
-router
-.route('/update')
-.get(userApiControlers.getUpdateUser)
-
-router
-.route('/bulk-update')
-.get(userApiControlers.getBulkUpdateUser);
-
-router
-.route('/delete')
-.get(userApiControlers.getDeleteUser);
-
-router
-.route('/file')
-.get(userApiControlers.getUserFile);
-
+//-5 (a,b,c)
 router
 .route('/:id')
 .get(userApiControlers.getUserID)
-.put(userApiControlers.updatePutUserById)
 .patch(userApiControlers.updatePatchUserById)
 .delete(userApiControlers.deleteUserById)
+
+//-6
+router
+.route('/bulkUpdate/:id')
+.patch(userApiControlers.bulkUpdateById)
+
+//-----------------------------
 
 module.exports = router;
 
