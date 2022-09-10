@@ -26,18 +26,25 @@ router
 .route('/save')
 .post(userApiControlers.getPostUser)
 
-//-5 (a,b,c)
+//-5
 router
 .route('/:id')
 .get(userApiControlers.getUserID)
-.patch(userApiControlers.updatePatchUserById)
-.delete(userApiControlers.deleteUserById)
 
 //-6
 router
-.route('/bulkUpdate/:id')
+.route('/update/:id')
+.patch(userApiControlers.updateUserById)
+
+//-7
+router
+.route('/bulk-update/:id')
 .patch(userApiControlers.bulkUpdateById)
 
+//-8
+router
+.route('/delete/:id')
+.delete(userApiControlers.deleteUserById)
 //-----------------------------
 
 module.exports = router;

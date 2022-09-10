@@ -82,7 +82,7 @@ module.exports.getPostUser = (req, res) => {
     res.send(usersData)
 };
 
-//-5a
+//-5
 module.exports.getUserID = (req, res) => {
     const { id } = req.params;
     const userId = usersData.find(user => user.id == id)
@@ -90,8 +90,8 @@ module.exports.getUserID = (req, res) => {
     res.send(userId)
 };
 
-//-5b
-module.exports.updatePatchUserById = (req, res) => {
+//-6
+module.exports.updateUserById = (req, res) => {
     const { id } = req.params;
     const filter = { id: id };
     const newData = usersData.find(data => data.id == id);
@@ -101,15 +101,7 @@ module.exports.updatePatchUserById = (req, res) => {
 
 };
 
-//-5c
-module.exports.deleteUserById = (req, res) => {
-    const { id } = req.params;
-    const filter = { id: id };
-    const newData2 = usersData.filter(data => data.id !== id);
-    res.send(newData2);
-};
-
-//-6
+//-7
 module.exports.bulkUpdateById = (req, res) => {
     const { id } = req.params;
     const newData = usersData.find(data => data.id == id);
@@ -122,6 +114,14 @@ module.exports.bulkUpdateById = (req, res) => {
     newData.photoUrl = req.body.photoUrl;
 
     res.send(newData);
+};
+
+//-8
+module.exports.deleteUserById = (req, res) => {
+    const { id } = req.params;
+    const filter = { id: id };
+    const newData2 = usersData.filter(data => data.id !== id);
+    res.send(newData2);
 };
 
 //----------------
